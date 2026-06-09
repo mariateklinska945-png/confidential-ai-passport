@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confidential AI Passport</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <nav>
+      <div class="logo">Confidential<span>AI</span></div>
+      <div class="nav-pill">Private Beta</div>
+    </nav>
+
+    <section class="hero">
+      <p class="eyebrow">AI Transparency Infrastructure</p>
+      <h1>Trust records for AI-powered decisions.</h1>
+      <p class="subtitle">
+        Generate a clear, auditable record of how personal data was processed by an AI system.
+      </p>
+    </section>
+
+    <section class="glass">
+      <div class="form">
+        <input id="company" placeholder="Company name" value="Acme HR" />
+        <input id="purpose" placeholder="Processing purpose" value="Candidate Screening" />
+        <textarea id="data" placeholder="Data processed">Anna Teklinska, Product Manager, blockchain and payments experience</textarea>
+        <button onclick="generatePassport()">Generate trust record</button>
+      </div>
+
+      <pre id="result" class="result">Your AI transparency record will appear here.</pre>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
