@@ -4,7 +4,7 @@ A lightweight AI transparency layer built with n8n and OpenAI.
 
 ## Live Demo
 
-🔗 https://your-netlify-url.netlify.app
+🔗 https://confi-ai-passport.netlify.app/
 
 ## What it does
 
