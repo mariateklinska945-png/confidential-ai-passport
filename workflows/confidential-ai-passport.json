@@ -1,0 +1,106 @@
+{
+  "name": "Confidential AI Passport MVP",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "confidential-ai-passport",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "aa611a71-3239-4344-8438-504351cf1855",
+      "name": "Webhook",
+      "webhookId": "23d516e7-131c-4e2e-9b4c-b2910f465915"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "responses": {
+          "values": [
+            {
+              "content": "=You are an AI Transparency Officer.\n\nGenerate an AI Passport as valid JSON only.\nDo not use markdown.\nDo not wrap in ```json.\n\nInput:\nCompany: {{$json.body.company}}\nPurpose: {{$json.body.purpose}}\nData: {{$json.body.data}}\n\nReturn this structure:\n{\n  \"passport_id\": \"AIP-001\",\n  \"company\": \"\",\n  \"purpose\": \"\",\n  \"data_categories\": [],\n  \"ai_system\": \"OpenAI\",\n  \"human_review\": true,\n  \"retention_period\": \"90 days\",\n  \"risk_level\": \"\",\n  \"user_notice\": \"\"\n}"
+            },
+            {}
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "1a039b29-10ba-4446-b7a6-4a95b167b2ae",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "RVbSgUoHaK6mfnYT",
+          "name": "OpenAI account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        560,
+        0
+      ],
+      "id": "20be6bfb-cca7-446f-8539-1770583ef32c",
+      "name": "Respond to Webhook"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "dd9bea50-e06b-4e0f-a826-8a988befd71b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "98828f2730ace337a09c0450d0b713e079257d87e0277a82e0c6d45781f3a140"
+  },
+  "id": "u8mLw3Ko1BcP6311",
+  "tags": []
+}
