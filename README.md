@@ -1,47 +1,72 @@
 # Confidential AI Passport
 
-Confidential AI Passport is an n8n-powered workflow that generates transparency reports for AI-driven data processing.
+A lightweight AI transparency layer built with n8n and OpenAI.
 
-## Problem
+## Live Demo
 
-Users often do not know:
+🔗 https://your-netlify-url.netlify.app
 
-* Which AI system processed their data
-* What data was used
-* Why it was processed
-* Whether humans reviewed the decision
-* How long the data will be retained
+## What it does
 
-## Solution
+Confidential AI Passport generates a structured transparency record for AI-powered data processing.
 
-Confidential AI Passport generates a machine-readable and human-readable passport that explains:
+Given:
 
+* Company name
+* Processing purpose
+* Data being processed
+
+The system generates:
+
+* Passport ID
 * AI system used
-* Purpose of processing
-* Data categories processed
-* Human involvement
+* Data categories
+* Risk level
 * Retention period
-* User notification
+* Human review status
+* User notice
+
+## Architecture
+
+Frontend (Netlify)
+↓
+n8n Webhook
+↓
+OpenAI
+↓
+AI Passport JSON Response
+
+## Example Request
+
+```json
+{
+  "company": "Acme HR",
+  "purpose": "Candidate Screening",
+  "data": "Anna Teklinska"
+}
+```
+
+## Example Response
+
+```json
+{
+  "passport_id": "AIP-001",
+  "company": "Acme HR",
+  "purpose": "Candidate Screening",
+  "risk_level": "Medium",
+  "human_review": true
+}
+```
 
 ## Tech Stack
 
 * n8n
-* OpenAI
-* Webhooks
+* OpenAI API
+* HTML/CSS/JavaScript
+* Netlify
 * GitHub
 
-## MVP
+## Motivation
 
-1. Receive data via webhook
-2. Analyze processing activity
-3. Generate AI Passport
-4. Return structured JSON response
+As AI systems increasingly process personal data, users rarely receive a clear explanation of how their information is used. Confidential AI Passport explores a simple way to generate transparent, human-readable records for AI-driven decisions.
 
-## Future Features
-
-* PDF Passport
-* Trust Score
-* GDPR Export
-* AI Act Compliance Reports
-* Supabase Storage
-* User Dashboard
